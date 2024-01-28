@@ -1,10 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 //screens
 import 'package:projeto_frutas/src/splash_screen.dart';
 import 'package:projeto_frutas/src/intro_screen.dart';
+import 'package:projeto_frutas/src/login_sreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +24,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const IntroScreen(),
+      home: const LoginScreen(),
     );
   }
 }
+
+
