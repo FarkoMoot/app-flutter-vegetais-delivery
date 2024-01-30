@@ -2,11 +2,16 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:projeto_frutas/src/home_screen.dart';
 
-//screens
+//Screens
 import 'package:projeto_frutas/src/splash_screen.dart';
 import 'package:projeto_frutas/src/intro_screen.dart';
 import 'package:projeto_frutas/src/login_sreen.dart';
+
+//Widgets
+import 'package:projeto_frutas/src/Widget/box_sell.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -24,9 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const HomeScreen(),
     );
   }
 }
-
-

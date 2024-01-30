@@ -69,6 +69,18 @@ flutter:
     - images/leaps.png
     - images/imgIntroScreen.png
     - images/imgIntroScreen1.png
+    - images/home_screen/image_container1.png
+    - images/home_screen/people.png
+    - images/home_screen/face.png
+    - images/home_screen/apple.png
+    - images/home_screen/broccoli.png
+    - images/home_screen/cheese.png
+    - images/home_screen/meat.png
+    - images/home_screen/fire.png
+    - images/home_screen/carne.png
+    - images/box_sell/pimentao.png
+    - images/box_sell/carne.png
+
   #   - images/a_dot_ham.jpegimgIntroScreen
 
   # An image asset can refer to one or more resolution-specific "variants", see

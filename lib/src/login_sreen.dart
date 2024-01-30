@@ -72,12 +72,12 @@ class LoginScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           hintText: '+55 (038) 8899-8899',
+                          border: InputBorder.none, 
                           hintStyle: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                             color: Color(0xffE0E0E0),
                           ),
-                          border: InputBorder.none,
                         ),
                       ),
                       const SizedBox(height: 32),
