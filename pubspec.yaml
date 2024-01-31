@@ -67,6 +67,7 @@ flutter:
     - images/leap2.png
     - images/leap3.png
     - images/leaps.png
+    - images/milho.png
     - images/imgIntroScreen.png
     - images/imgIntroScreen1.png
     - images/home_screen/image_container1.png
@@ -80,6 +81,11 @@ flutter:
     - images/home_screen/carne.png
     - images/box_sell/pimentao.png
     - images/box_sell/carne.png
+    - images/box_sell/abobora.png
+    - images/box_sell/brocolis.png
+    - images/box_sell/cenoura.png
+    - images/box_sell/couve.png
+    - images/box_sell/gengibre.png
 
   #   - images/a_dot_ham.jpegimgIntroScreen
 
