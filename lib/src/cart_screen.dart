@@ -54,7 +54,7 @@ class CartScreen extends  StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+        padding: EdgeInsets.fromLTRB(24, 0, 24, 18),
         child: Column(
           children: [
             RowBoxSell(
@@ -72,6 +72,24 @@ class CartScreen extends  StatelessWidget {
               price: '4',
               product: 'Brocolis',
             ),
+            Spacer(),
+            Container(
+              width: 340,
+              height: 55,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: Color(0xff23AA49),
+              ),
+              child: Text(
+                'Comprar',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xffffffff),
+                ),
+              ),
+            )
           ]
         ),
       ),
