@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 
@@ -73,23 +75,8 @@ class CartScreen extends  StatelessWidget {
               product: 'Brocolis',
             ),
             Spacer(),
-            Container(
-              width: 340,
-              height: 55,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: Color(0xff23AA49),
-              ),
-              child: Text(
-                'Comprar',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xffffffff),
-                ),
-              ),
-            )
+            
+            BigButton(nameButton: 'Comprar',),
           ]
         ),
       ),
@@ -103,8 +90,10 @@ class RowBoxSell extends StatelessWidget {
     required this.product,
     required this.price,
     required this.img,
+    this.screen = 'none',
   });
 
+  final String screen;
   final String product;
   final String price;
   final AssetImage img;
@@ -116,14 +105,17 @@ class RowBoxSell extends StatelessWidget {
 
       margin: EdgeInsets.fromLTRB(0, 24, 0, 0),
       width: 390,
-      height: 62,
+      height: (this.screen == 'item_details' ) ? 70 : 62,
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            width: 1,
-            color: Color(0xffcccccc),
-
-          ),
+        border: (this.screen == 'item_details' ) ? 
+          Border(
+            bottom: BorderSide.none,
+          )
+          : Border(
+              bottom: BorderSide(
+                width: 1,
+                color: Color(0xffcccccc),
+              ),
         ),
       ),
       child: 
@@ -134,12 +126,21 @@ class RowBoxSell extends StatelessWidget {
             Container(
               child: Row(
                 children:[
-                  Image(
-                    image: img,
-                    width: 42,
-                    height: 42,
+
+                  (this.screen == 'item_details' )
+                  ?
+                    Container()
+                  : Row(
+                    children: [
+                      Image(
+                        image: img,
+                        width: 42,
+                        height: 42,
+                      ),
+                      SizedBox(width: 16,),
+                    ]
                   ),
-                  SizedBox(width: 16,),
+                  
 
                   Container(
                     child: Column(
@@ -147,15 +148,26 @@ class RowBoxSell extends StatelessWidget {
                       children: [
                           Text(
                             product,
-                            style: const TextStyle(
+                            style: (this.screen == 'item_details' ) ? TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            )
+                            : TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
-                            ),
+                            )
+                            ,
                           ),
                           Text(
                             '1kg, ${price}R\$',
-                            style: const TextStyle(
+                            style: (this.screen == 'item_details' ) ?  TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xffFF324B),
+                            )
+                            : TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Color(0xffFF324B),
@@ -214,5 +226,36 @@ class RowBoxSell extends StatelessWidget {
           ],
         )
     ); // Widget que sera externalizado
+  }
+}
+
+class BigButton extends StatelessWidget {
+  const BigButton({
+    super.key,
+    required this.nameButton,
+  });
+
+  final String nameButton;
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Container(
+      width: 340,
+      height: 55,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(40),
+        color: Color(0xff23AA49),
+      ),
+      child: Text(
+        nameButton,
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: Color(0xffffffff),
+        ),
+      ),
+    );
   }
 }

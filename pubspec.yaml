@@ -88,6 +88,11 @@ flutter:
     - images/box_sell/couve.png
     - images/box_sell/gengibre.png
 
+    - images/details_screen/earb.png
+    - images/details_screen/fire.png
+    - images/details_screen/star.png
+    - images/details_screen/calendar.png
+
   #   - images/a_dot_ham.jpegimgIntroScreen
 
   # An image asset can refer to one or more resolution-specific "variants", see
