@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_frutas/src/cart_screen.dart';
+import 'package:projeto_frutas/app/cart_screen.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
   const ItemDetailsScreen({super.key});

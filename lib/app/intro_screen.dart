@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_frutas/routes.dart';
+import 'package:routefly/routefly.dart';
 
 
 
@@ -87,19 +89,24 @@ class IntroScreen extends StatelessWidget {
                         height: 150,
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(100, 48, 100, 48),
-                          child: Container(
-                            alignment: Alignment.center,
-                            decoration: const BoxDecoration(
-                              color: Color.fromRGBO(0, 153, 89, 1),
-                              borderRadius: BorderRadius.all(Radius.circular(40))
-                            ),
-                            child: const Text(
-                              'Comprar Agora!',
-                              style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xffffffff),
+                          child: GestureDetector(
+                            onTap: () {
+                              Routefly.navigate(routePaths.login);
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: const BoxDecoration(
+                                color: Color.fromRGBO(0, 153, 89, 1),
+                                borderRadius: BorderRadius.all(Radius.circular(40))
+                              ),
+                              child: const Text(
+                                'Comprar Agora!',
+                                style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xffffffff),
+                                ),
                               ),
                             ),
                           ),

@@ -1,17 +1,6 @@
-import 'dart:async';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-//Screens
-import 'package:projeto_frutas/src/splash_screen.dart';
-import 'package:projeto_frutas/src/intro_screen.dart';
-import 'package:projeto_frutas/src/login_sreen.dart';
-import 'package:projeto_frutas/src/home_screen.dart';
-import 'package:projeto_frutas/src/items_screen.dart';
-import 'package:projeto_frutas/src/cart_screen.dart';
-import 'package:projeto_frutas/src/item_details_screen.dart';
+import 'package:projeto_frutas/routes.dart';
+import 'package:routefly/routefly.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,13 +12,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ItemDetailsScreen(),
+      routerConfig: Routefly.routerConfig(
+        routes: routes,
+        initialPath: routePaths.splash,
+      ),
     );
+    
   }
 }
+

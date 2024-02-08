@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_frutas/src/Widget/box_sell.dart';
+import 'package:projeto_frutas/app/Widget/box_sell.dart';
 
 
 class HomeScreen extends StatelessWidget {
