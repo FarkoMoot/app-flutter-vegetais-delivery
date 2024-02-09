@@ -89,6 +89,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Column(
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           const SizedBox(height: 16,),
           Padding(
@@ -119,101 +120,31 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
-          Container(
-            width: 342,
-            height: 158,
+          const SizedBox(height: 16,),
+          
 
-            decoration: BoxDecoration(
-              color: const Color(0xffF3F5F7),
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 3,
-                  blurRadius: 4,
-                  offset: const Offset(1,3),
-                )
-              ],
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children:[
-                const Image(
-                  fit: BoxFit.cover,
-                  image: AssetImage('images/home_screen/image_container1.png'),
-                ),
-                const SizedBox(width: 10,),
-                Container(
-                  width: 161,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: Color(0xff23AA49),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.elliptical(40, 350),
-                      bottomLeft: Radius.elliptical(40, 350),
-                      topRight: Radius.circular(150),
-                      bottomRight: Radius.circular(150),
-                    ),
-                  ),
-                  child: Column(
-                    
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Text(
-                        'Oferta do Dia',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xffffffff),
-                        ),
-                      ),
-                      const Text(
-                        '25% off',
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xffffffff),
-                        ),
-                      ),
-                      const SizedBox(height: 8,),
-                      Container(
-                        width: 108,
-                        height: 30,
+          SizedBox(
+            // width: 342,
+            height: 176,
+            
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              //padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+              padding: EdgeInsets.fromLTRB(18, 0, 18, 18),
+              
+              children: <Widget>[
+                BoxTopo(),
+                SizedBox(width: 12,),
+                BoxTopo(),
+                SizedBox(width: 12,),
 
-                        decoration: BoxDecoration(
-
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color(0xffffffff),
-                        ),
-                        child: 
-                          const Center(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'Comprar',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xff6BA821),
-                                ),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_right,
-                                  color: Color(0xff6BA821),
-                                )
-                              ],
-                            )
-                          ),
-                        )
-                    ],
-                  )
-                ),
+                BoxTopo(),
+                
               ],
             ),
           ),
+
+
           const SizedBox(height: 16,),
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
@@ -364,3 +295,105 @@ class Categoryes extends StatelessWidget {
   }
 }
 
+class BoxTopo extends StatelessWidget {
+  const BoxTopo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Container(
+      width: 342,
+      height: 158,
+    
+      decoration: BoxDecoration(
+        color: const Color(0xffF3F5F7),
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 4,
+            offset: const Offset(1,3),
+          )
+        ],
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children:[
+          const Image(
+            fit: BoxFit.cover,
+            image: AssetImage('images/home_screen/image_container1.png'),
+          ),
+          const SizedBox(width: 10,),
+          Container(
+            width: 161,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              color: Color(0xff23AA49),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.elliptical(40, 350),
+                bottomLeft: Radius.elliptical(40, 350),
+                topRight: Radius.circular(150),
+                bottomRight: Radius.circular(150),
+              ),
+            ),
+            child: Column(
+              
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Oferta do Dia',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xffffffff),
+                  ),
+                ),
+                const Text(
+                  '25% off',
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xffffffff),
+                  ),
+                ),
+                const SizedBox(height: 8,),
+                Container(
+                  width: 108,
+                  height: 30,
+    
+                  decoration: BoxDecoration(
+    
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color(0xffffffff),
+                  ),
+                  child: 
+                    const Center(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Comprar',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff6BA821),
+                          ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_right,
+                            color: Color(0xff6BA821),
+                          )
+                        ],
+                      )
+                    ),
+                  )
+              ],
+            )
+          ),
+        ],
+      ),
+    );
+  }
+}

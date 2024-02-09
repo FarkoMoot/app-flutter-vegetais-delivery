@@ -1,9 +1,50 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:projeto_frutas/routes.dart';
+import 'package:routefly/routefly.dart';
 
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({
+    super.key,
+  });
+
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  // TextEditingController inputcontroller = new TextEditingController();
+  var tellNumber = '+55 (038) 8899-8899'; 
+  // var activiteTextFild = false; 
+
+  void _mudaNum(String str) {
+    if( tellNumber == '+55 (038) 8899-8899' ){
+      setState(() {
+        tellNumber = str;
+      });
+    } else if(str == '*') {
+        var stringNew = tellNumber.substring(0, (tellNumber.length - 1));
+      setState(() {
+        //tellNumber.indexOf(tellNumber.length - 2)
+        tellNumber = stringNew;
+      });
+    } else {
+      setState(() {
+        tellNumber = tellNumber+str;
+      });
+    }
+  }
+
+  void nextScreen() {
+    if( tellNumber == '123456789' ){
+      Routefly.navigate(routePaths.home);
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,18 +109,31 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 32),
-                      const TextField(
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          hintText: '+55 (038) 8899-8899',
-                          border: InputBorder.none, 
-                          hintStyle: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xffE0E0E0),
-                          ),
+                      Text(
+                        tellNumber,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xffE0E0E0),
                         ),
                       ),
+                      // TextField(
+                      //   textInputAction: ,
+                      //   controller: inputcontroller,
+                      //   autofocus: true,
+                      //   keyboardType: TextInputType.none,
+                      //   textAlign: TextAlign.center,
+                      //   decoration: InputDecoration(
+                      //     hintText: '+55 (038) 8899-8899',
+                      //     border: InputBorder.none, 
+                      //     hintStyle: TextStyle(
+                      //       fontSize: 24,
+                      //       fontWeight: FontWeight.bold,
+                      //       color: Color(0xffE0E0E0),
+                      //     ),
+                      //   ),
+                      //   //onChanged: (value) => { value },
+                      // ),
                       const SizedBox(height: 32),
                     ],
                   ),
@@ -90,20 +144,25 @@ class LoginScreen extends StatelessWidget {
                 child: Container(
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        width: 318,
-                        height: 52,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff23AA49),
-                          borderRadius: BorderRadius.circular(40), 
-                        ),
-                        child: const Text(
-                          'Continue',
-                          style: TextStyle(
-                            color: Color(0xffffffff),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: () {
+                          nextScreen();
+                        },
+                        child: Container(
+                          width: 318,
+                          height: 52,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff23AA49),
+                            borderRadius: BorderRadius.circular(40), 
+                          ),
+                          child: const Text(
+                            'Continue',
+                            style: TextStyle(
+                              color: Color(0xffffffff),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -131,32 +190,42 @@ class LoginScreen extends StatelessWidget {
                     color: const Color(0xffF3F5F7),
                     borderRadius: BorderRadius.circular(24)
                   ),
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Row1(first: '1', second: '2', third: '3'),
-                      Row1(first: '4', second: '4', third: '6'),
-                      Row1(first: '7', second: '8', third: '9'),
+                      Row1(first: '1', second: '2', third: '3', func: _mudaNum,),
+                      Row1(first: '4', second: '5', third: '6', func: _mudaNum,),
+                      Row1(first: '7', second: '8', third: '9', func: _mudaNum,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text('aa',
+                          const Text('aa',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                               color: Colors.transparent,
                             ),
                           ),
-                          Text('0',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          GestureDetector(
+                            onTap: () => {
+                              _mudaNum('0'),
+                            },
+                            child: const Text('0',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                          Icon(
-                            Icons.backspace_outlined,
-                            size: 24,
+                          GestureDetector(
+                            onTap: () => {
+                              _mudaNum('*'),
+                            },
+                            child: const Icon(
+                              Icons.backspace_outlined,
+                              size: 24,
+                            ),
                           )
                         ],
                       ),
@@ -178,11 +247,13 @@ class Row1 extends StatelessWidget {
     required this.first,
     required this.second,
     required this.third,
+    required this.func,
   });
 
   final String first;
   final String second;
   final String third;
+  final Function func;
 
   @override
   Widget build(BuildContext context) {
@@ -190,25 +261,40 @@ class Row1 extends StatelessWidget {
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text('$first',
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+          GestureDetector(
+            onTap: () => {
+              func(first),
+            },
+            child: Text('$first',
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
           ),
-          Text('$second',
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+          GestureDetector(
+            onTap: () => {
+              func(second),
+            },
+            child: Text('$second',
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
           ),
-          Text('$third',
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+          GestureDetector(
+            onTap: () => {
+              func(third),
+            },
+            child: Text('$third',
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
           ),
         ],

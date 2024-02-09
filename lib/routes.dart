@@ -1,3 +1,4 @@
+import 'package:projeto_frutas/app/home_screen.dart';
 import 'package:routefly/routefly.dart';
 
 //screens or pages
@@ -34,6 +35,15 @@ List<RouteEntity> get routes => [
       settings,
       const LoginScreen(),
     ),
+  ),
+  RouteEntity(
+    key: '/home',
+    uri: Uri.parse('/home'),
+    routeBuilder: (context, settings) => Routefly.defaultRouteBuilder(
+      context,
+      settings,
+      const HomeScreen(),
+    ),
   )
 
 ];
@@ -41,5 +51,6 @@ List<RouteEntity> get routes => [
 const routePaths = (
   splash: '/splash',
   intro: '/intro',
-  login: '/login'
+  login: '/login',
+  home: '/home',
 );
